@@ -4,21 +4,96 @@ using System.Text;
 
 namespace AddressBook
 {
-    class Contact
+    interface IContactDetails
     {
+        void ValidateContactDetails();
+    }
+    class Contact : IContactDetails
+    {
+        //variables
+        readonly private string firstName;
+        readonly private string lastName;
+        readonly private string address;
+        readonly private string city;
+        readonly private string state;
+        readonly private int zipCode;
+        readonly private long phoneNumber;
+        readonly private string email; 
+
+        //properties
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public string PhoneNumber { get; set; }
-        public string HomeAddress { get; set; }
-        public string EmailAddress { get; set; }
+        public string Address { get; set; }
+        public string City { get; set; }
+        public string State { get; set; }
+        public int ZipCode { get; set; }
+        public long PhoneNumber { get; set; }
+        public string Email { get; set; }
 
-        public string GetInfo()
+        private bool ValidateFullName(string firstName, string lastName)
         {
-            string Message ="First Name: {0} \n Last Name: {1}\n Phone Number: {2}\nHome Address: {3}\n Email Address: {4}\n ";
-            return string.Format(Message, FirstName, LastName, PhoneNumber, HomeAddress, EmailAddress);
-
+            try
+            {
+                if (firstName != " " && lastName != " ")
+                    return true;
+                else
+                    return false;
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Error in Full Name");
+            }
+            return false;
         }
 
+        private bool ValidateAddress(string address, string city, string state, int zipCode)
+        {
+            try
+            {
+                if (address != " " && city != " " && state != " " && zipCode != 0)
+                    return true;
+                else
+                    return false;
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Error in Address");
+            }
+            return false;
+        }
+        private bool ValidateContactNumbers(long phoneNumber, string email)
+        {
+            try
+            {
+                if (phoneNumber != 0 && email != " ")
+                    return true;
+                else
+                    return false;
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Error in Contact Numbers");
+            }
+            return false;
+        }
+        public void ValidateContactDetails()
+        {
+            try
+            {
+                bool full_Name = ValidateFullName(FirstName, LastName);
+                bool addr = ValidateAddress(Address, City, State, ZipCode);
+                bool contact = ValidateContactNumbers(PhoneNumber, Email);
+                if (full_Name == true && addr == true && contact == true)
+                    Console.WriteLine("Contact Details Saved Successfully");
+                else
+                    Console.WriteLine("Contact Save Failed!!");
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Error in Saving Details");
+            }
+
+        }
 
 
     }

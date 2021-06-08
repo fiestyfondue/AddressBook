@@ -4,35 +4,30 @@ namespace AddressBook
 {
     class Program
     {
+        /// <summary>
+        /// Address book program - UC1 creating contact in addressbook
+        /// storing name address phone number email
+        /// </summary>
+        /// <param name="args"></param>
         static void Main(string[] args)
         {
-            AddressBook addressBook = new AddressBook(50);
-            Console.WriteLine("Address Book Options: \n" +
-                                 "Add-to add new Entry .\n" +
-                                 "search-To search Entry. \n" +
-                                 "clear- To clear screen. \n" +
-                                 "options - Display Instructions\n");
-            while(true)
+            Contact contacts = new Contact
             {
-                Console.WriteLine("Options: ");
-                string Instructions = Console.ReadLine();
-
-                if(Instructions.ToLower()=="quit")
-                {
-                    Console.Clear();
-                    Console.WriteLine("GoodBye!");
-                    break;
-                }
-                else if(Instructions.ToLower()=="Add")
-                {
-                    Console.Clear();
-                    addressBook.NewEntry();
-                }
-                else
-                {
-                    Console.WriteLine("Invalid Input!");
-                }
-            }
+                FirstName = "John",
+                LastName = "Wick",
+                Address = "Bakers Street",
+                City = "London",
+                State = "UK",
+                ZipCode = 44520,
+                PhoneNumber = 1234567890,
+                Email = "harsh.21483@gmail.com"       //for contact
+            };
+            contacts.ValidateContactDetails();
+            Console.WriteLine("Contact Details: ");
+            Console.WriteLine($"Full Name: {contacts.FirstName + contacts.LastName} ");
+            Console.WriteLine($"Phone Number: {contacts.PhoneNumber} ");
+            Console.WriteLine($"Address: {contacts.Address} \n \t{contacts.City} {contacts.State} \n \t{contacts.ZipCode} ");
+            Console.WriteLine($"Email: {contacts.Email} ");
         }
     }
 }
