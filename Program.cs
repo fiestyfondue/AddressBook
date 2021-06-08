@@ -28,6 +28,12 @@ namespace AddressBook
             Console.WriteLine($"Phone Number: {contacts.PhoneNumber} ");
             Console.WriteLine($"Address: {contacts.Address} \n \t{contacts.City} {contacts.State} \n \t{contacts.ZipCode} ");
             Console.WriteLine($"Email: {contacts.Email} ");
+
+            Showcase display = new Showcase();
+            ViewContact VW = new ViewContact();
+            VW.ContactViewMethod();
+            display.DisplayChoice();
+            display.Selection();
         }
     }
 }
