@@ -106,6 +106,45 @@ namespace AddressBook
                 Console.WriteLine("New contact entry aborted.");
 
             }
+
+        }
+        public void DeleteContact()
+        {
+            try
+            {
+                if (contactsList.Count == 0)
+                {
+                    Console.WriteLine("No Contacts available to Delete");
+                }
+                else
+                {
+                    int i = 0;
+                    Console.WriteLine("Select the contact you want to Delete : ");
+                    foreach (Contact contacts in ViewContact.contactsList)
+                    {
+
+                        Console.WriteLine($" press {i} for {contacts.FirstName}");
+                        i++;
+                    }
+
+                    {
+                        Console.WriteLine();
+                    }
+                    int sel = Convert.ToInt32(Console.ReadLine());
+                    while (sel >= i || sel < 0)
+                    {
+                        Console.WriteLine("invalid choice made,");
+                        Console.WriteLine("enter a valid choice");
+                        sel = Convert.ToInt32(Console.ReadLine());
+                    }
+                    contactsList.RemoveAt(sel);
+                    Console.WriteLine("Contact deleted successfully!!");
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
     }
 }
