@@ -37,7 +37,7 @@ namespace AddressBook
                     DisplayChoice();
                     input = Convert.ToInt32(Console.ReadLine());
                 }
-                ViewContact ViewContact = new ViewContact();
+                ContactView ViewContact = new ContactView();
                 switch (input)
                 {
                     case 1:
@@ -53,7 +53,7 @@ namespace AddressBook
                         //Add New Contact
                         ViewContact.NewContact();
                         //display contacts count
-                        Console.WriteLine($" Contacts: {ViewContact.contactsList.Count}");
+                        Console.WriteLine($" Contacts: {ContactView.contactsList.Count}");
                         //display list
                         ViewContact.Listview();
                         //Options for user

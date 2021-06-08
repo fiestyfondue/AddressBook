@@ -30,7 +30,7 @@ namespace AddressBook
             Console.WriteLine($"Email: {contacts.Email} ");
 
             Showcase display = new Showcase();
-            ViewContact VW = new ViewContact();
+            ContactView VW = new ContactView();
             VW.ContactViewMethod();
             display.DisplayChoice();
             display.Selection();
