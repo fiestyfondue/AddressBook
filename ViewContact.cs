@@ -4,8 +4,18 @@ using System.Text;
 
 namespace AddressBook
 {
-    class ViewContact
+    interface IOperationalMethods
     {
+        public void ContactViewMethod();
+        public void Listview();
+        public void NewContact();
+        public void DeleteContact();
+        public void EditContact();
+
+    }
+    class ViewContact : IOperationalMethods
+    {
+
         public static List<Contact> contactsList = new List<Contact>();
 
         public void ContactViewMethod()
